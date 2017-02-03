@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Reume Email</title>
+  </head>
+  <body>
+<h2>Enter the person's email you want to send your resume to:</h2>
+<input id="email-adress" type="text"/>
+<button id="submit">Send!</button>
+<script  src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script>
+  $('#submit').click(function(){
+    $.ajax({
+      url: '/resume',
+      method: 'POST',
+      succes: function(res){
+        console.log(res);
+      },
+      data: {
+        destination_email: $('#email-adress').val()
+      }
+    });
+  });
+</script>
+  </body>
+</html>
